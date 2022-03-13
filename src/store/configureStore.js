@@ -1,7 +1,7 @@
 import thunkMiddleware from 'redux-thunk';
 import loggerMiddleware from './middleware/logger';
 import rootReducer from './reducers';
-import rootSaga from './sagas';
+// import rootSaga from './sagas';
 
 import createSagaMiddleware from 'redux-saga';
 import {configureStore} from '@reduxjs/toolkit';
@@ -29,6 +29,6 @@ const store = configureStore({
   middleware: [thunk, ...middlewares],
 });
 
-sagaMiddleware.run(rootSaga);
+// sagaMiddleware.run(rootSaga);
 
 export default store;

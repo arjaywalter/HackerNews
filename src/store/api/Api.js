@@ -1,5 +1,6 @@
 import Config from 'react-native-config';
 import axios from 'axios';
+import * as transformer from './transformer';
 
 const baseURL = Config.BASE_URL;
 // const apiKey = Config.API_KEY;
@@ -11,7 +12,7 @@ const instance = axios.create({
     // 'x-api-key': apiKey,
     'Content-Type': 'application/json',
     'Cache-Control': 'no-cache',
-    Authorization: 'Basic Y29kZWdlZWszMTpuZW1lc2lzQDAx',
+    // Authorization: 'Basic Y29kZWdlZWszMTpuZW1lc2lzQDAx',
   },
 });
 
@@ -66,7 +67,7 @@ export const fetchTopStoriesApi = async () => {
   const options = {
     method: 'get',
     url: `${baseURL}/v0/topstories.json`,
-    transformResponse: [res => transformer.transformPhotos(JSON.parse(res))],
+    transformResponse: [res => transformer.transformStories(JSON.parse(res))],
   };
   return request(options);
 };
@@ -75,7 +76,14 @@ export const fetchStoryApi = async ({id}) => {
   const options = {
     method: 'get',
     url: `${baseURL}/v0/item/${id}.json`,
-    transformResponse: [res => transformer.transformPhotos(JSON.parse(res))],
+  };
+  return request(options);
+};
+
+export const fetchAuthorApi = async ({username}) => {
+  const options = {
+    method: 'get',
+    url: `${baseURL}/v0/user/${username}.json`,
   };
   return request(options);
 };

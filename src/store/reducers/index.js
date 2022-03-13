@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
 
-import baseSlice from './baseSlice';
 import baseReducer from './baseReducer'; // Traditional reducer implementation
+import base from './baseSlice'; // Slice template
+import story from './storySlice';
 
 const rootReducer = combineReducers({
-  baseSlice,
-  baseReducer,
+  story
 });
 
 export default rootReducer;

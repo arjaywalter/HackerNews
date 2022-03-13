@@ -1,12 +1,4 @@
 import Actions from '../actions';
-import _ from 'lodash';
-
-const Actions = {
-  FETCH_REQUEST: 'FETCH_REQUEST',
-  FETCH_SUCCESS: 'FETCH_SUCCESS',
-  FETCH_FAIL: 'FETCH_FAIL',
-};
-
 
 const initialState = {
   data: [],
